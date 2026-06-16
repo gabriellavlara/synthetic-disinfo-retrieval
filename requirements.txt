@@ -1,0 +1,39 @@
+# Core
+numpy
+pandas
+matplotlib
+seaborn
+ipykernel
+ipywidgets
+python-dotenv
+pyyaml
+
+# Data / IO
+pyarrow
+fastparquet
+huggingface_hub
+
+# Data curation
+wordcloud
+
+# Generation
+transformers
+torch
+accelerate
+openai
+google-generativeai
+
+# Embedding
+sentence-transformers
+umap-learn
+scikit-learn
+tqdm
+
+# Baseline
+rank-bm25
+
+# Evaluation
+bert-score
+evaluate
+tensorflow
+krippendorff

@@ -1,0 +1,139 @@
+#------------------------**********---------------------------
+# Run config
+#------------------------**********---------------------------
+
+Run:
+  dataset_nr: 2
+  max_tokens: 200
+  n_repetitions: 5
+  llm_models: ["deepseek"]
+  embedding_models: ["gemma", "bertweet", "bge-m3"] # Options: gemma, bertweet, bge-m3
+  reranker: none   # Options: none | bertscore | bleurt
+  
+
+#------------------------**********---------------------------
+# Pipeline config
+#------------------------**********---------------------------
+Pipeline:
+  run_generation: false
+  run_embedding: true
+  run_evaluation: true
+  run_aggregation: true
+
+  overwrite:
+    generation: true
+    embedding: true
+    evaluation: true
+    aggregation: true
+
+
+#------------------------**********---------------------------
+# Experimental config
+#------------------------**********---------------------------
+# Dataset
+Datasets:
+  - dataset_nr: 1
+    dataset_name: "Monkeypox_kaggle"
+    event_name: "Monkeypox"
+
+  - dataset_nr: 2
+    dataset_name: "English_generalization"
+    event_name: "English_generalization"
+
+  - dataset_nr: 3
+    dataset_name: "German_generalization"
+    event_name: "German_generalization"
+
+# Generation
+LLMs:
+  - model_name: "qwen"
+    model_id: "Qwen/Qwen2.5-7B-Instruct"
+    device: "mps"
+
+  - model_name: "deepseek"
+    model_id: "deepseek-chat"
+    device: "mps"
+
+  - model_name: "gpt"
+    model_id: "gpt-4o-mini"
+    device: "mps"
+
+  - model_name: "gemini"
+    model_id: "gemini-2.5-flash-lite"
+    device: "mps"
+  
+  - model_name: "llama"                                                                                                                                    
+    model_id: "llama-3.3-70b-versatile"  # Groq's model ID for Llama 3.3 70B
+    device: "cuda"   
+  
+    
+
+# Embedding
+Embeddings:
+  - model_name: "s-bert-mini"
+    model_id: "all-MiniLM-L6-v2"
+    model_dim: 384
+
+  - model_name: "mpnet-base"
+    model_id: "sentence-transformers/all-mpnet-base-v2"
+    model_dim: 768
+  
+  - model_name: "gemma"
+    model_id: "google/embeddinggemma-300M"
+    model_dim: 768
+
+  - model_name: "bertweet"
+    model_id: "vinai/bertweet-base"
+    model_dim: 768
+    max_seq_length: 128
+
+  - model_name: "bge-m3"
+    model_id: "BAAI/bge-m3"
+    model_dim: 1024
+    trust_remote_code: true
+
+
+# Evaluation
+Evaluation:
+  active_scorer: roberta   # which BERTScore model to use: roberta | bertweet | bertweet_large
+  run_bleurt: false             # set to true to also compute BLEURT scores (slow, requires GPU)
+  retrieval:
+    metric: cosine
+    m: 50
+
+  reranking:
+    bertweet:
+      model_name: bertweet
+      model_type: vinai/bertweet-base
+      num_layers: 9
+      batch_size: 32
+      max_token_length: 128
+      device: cuda
+
+    roberta:
+      model_name: roberta_large
+      model_type: roberta-large
+      num_layers: 17
+      batch_size: 16      # roberta-large is bigger, reduce if you get OOM
+      max_token_length: 512
+      device: cuda
+
+    bertweet_large:
+      model_name: bertweet_large
+      model_type: vinai/bertweet-large
+      num_layers: 17
+      batch_size: 16
+      max_token_length: 128
+      device: cuda
+
+    bleurt:
+      model_name: "bleurt"
+      model_id: "bleurt-20"
+      model_checkpoint: "BLEURT-20"
+      num_layers: 
+      batch_size: 32
+      device: cuda
+
+# Aggregation
+Aggregation:
+  flagging: {}
