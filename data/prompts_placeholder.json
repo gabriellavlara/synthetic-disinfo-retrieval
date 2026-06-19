@@ -1,0 +1,50 @@
+
+[
+  {
+    "promptID": 1,
+    "system_prompt": "",
+    "user_prompt": "",
+    "instruction_technique": "",
+    "instruction_style": "",
+    "task_type": "",
+    "has_misinformation_constraint": true,
+    "misinformation_type": "",
+    "n_shots": 0
+  },
+  {
+      "promptID": 2,
+      "system_prompt": "",
+      "user_prompt": "",
+      "instruction_technique": "",
+      "instruction_style": "",
+      "task_type": "",
+      "has_misinformation_constraint": true,
+      "misinformation_type": "",
+      "n_shots": 0
+    },
+  
+  {
+    "promptID": 3,
+    "system_prompt": "",
+    "user_prompt": "",
+    "instruction_technique": "",
+    "instruction_style": "",
+    "task_type": "",
+    "has_misinformation_constraint": true,
+    "misinformation_type": "",
+    "n_shots": 0
+  },
+ 
+  {
+    "promptID": 4,
+    "system_prompt": "",
+    "user_prompt": "",
+    "instruction_technique": "",
+    "instruction_style": "",
+    "task_type": "",
+    "has_misinformation_constraint": true,
+    "misinformation_type": "",
+    "n_shots": 0
+  }
+]
+  

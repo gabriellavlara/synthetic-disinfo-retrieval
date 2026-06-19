@@ -5,6 +5,9 @@
 
 # Thesis experiment artifacts
 data/**
+!data/README.md
+!data/prompts_placeholder.json
+!data/newsarticles/news-articles_placeholder.json
 
 # Virtual environment
 venv/
