@@ -60,9 +60,9 @@ Final output of the aggregation stage. Contains one row per human post, ranked b
 
 Posts are sorted by `best_{score}_score` descending, so rank 1 is the post the model considers most suspicious.
 
-### 3. Cosine baseline arrays — `baseline_{llm}.npy`
+### 3. BM25 baseline arrays — `baseline_{llm}.npy`
 
-Legacy format. 1-D NumPy array of length H (number of human posts) containing the maximum cosine similarity score each human post received across all LLM queries. Superseded by the `flagged_*_reranker=none_m=all.parquet` files.
+2-D NumPy array of shape (Q × H), where Q is the number of LLM-generated queries and H is the number of human posts. Each entry is the BM25 score assigned to a human post for a given LLM query, computed by `bm25_retriever.py`. Used in the notebooks to plot the lexical baseline precision curves alongside the semantic retrieval results.
 
 ---
 
