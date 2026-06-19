@@ -11,7 +11,7 @@ This repository implements a proof-of-concept framework that uses Large Language
 
 ### Pipeline overview
 
-![Pipeline overview](pipeline.png)
+![Pipeline overview](docs/pipeline.png)
 
 ### Repository structure
 
